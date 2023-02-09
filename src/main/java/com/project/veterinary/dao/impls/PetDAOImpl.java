@@ -54,7 +54,14 @@ public class PetDAOImpl implements PetDao<Pet> {
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		
+		Pet petReference = (Pet) session.createQuery("from Pet where id=:id", Pet.class).
+				setParameter("id", id).getSingleResult();
+		
+		session.remove(petReference);
+		session.getTransaction().commit();
 		
 	}
 	
