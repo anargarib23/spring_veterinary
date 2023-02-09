@@ -1,6 +1,8 @@
 package com.project.veterinary.model;
 
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,18 +21,27 @@ public class Pet {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="breed")
+	private String breed;
+	
 	@Column(name="species")
 	private String species;
 	
-//	@Column(name="birth_date")
-//	private Date birthDate;
-//	
-//	@Column(name="registration_date")
-//	private Date registrationDate;
-	
 	@Column(name="sterilized")
 	private Boolean sterilized;
-
+	
+	@Column(name="birth_date")
+	private Date birthDate;
+	
+	@Column(name="registration_date")
+	private Date registrationDate;
+	
+	@Column(name="sterilization_date")
+	private Date sterilizationDate;
+	
 	public Long getId() {
 		return id;
 	}
@@ -47,21 +58,21 @@ public class Pet {
 		this.species = species;
 	}
 
-//	public Date getBirthDate() {
-//		return birthDate;
-//	}
-//
-//	public void setBirthDate(Date birthDate) {
-//		this.birthDate = birthDate;
-//	}
-//
-//	public Date getRegistrationDate() {
-//		return registrationDate;
-//	}
-//
-//	public void setRegistrationDate(Date registrationDate) {
-//		this.registrationDate = registrationDate;
-//	}
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
 
 	public Boolean getSterilized() {
 		return sterilized;
@@ -71,11 +82,29 @@ public class Pet {
 		this.sterilized = sterilized;
 	}
 
-	@Override
-	public String toString() {
-		return "Pet [id=" + id + ", species=" + species + ", sterilized=" + sterilized + "]";
+	public String getName() {
+		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+
+	public Date getSterilizationDate() {
+		return sterilizationDate;
+	}
+
+	public void setSterilizationDate(Date sterilizationDate) {
+		this.sterilizationDate = sterilizationDate;
+	}
 
 	
 	

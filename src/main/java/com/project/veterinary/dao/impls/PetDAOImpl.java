@@ -28,6 +28,7 @@ public class PetDAOImpl implements PetDao<Pet> {
 	@Override
 	public List<Pet> getAll() {
 		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
 		List<Pet> petList = session.createQuery("from Pet", Pet.class).getResultList();
 		return petList;
 	}
@@ -36,7 +37,7 @@ public class PetDAOImpl implements PetDao<Pet> {
 	public void add(Pet pet) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.save(pet);
+		session.persist(pet);
 		session.getTransaction().commit();
 	}
 

@@ -1,5 +1,7 @@
 package com.project.veterinary.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +19,8 @@ public class PetController {
 	private PetService petService;
 	
 	@GetMapping
-	public Pet getPet() {
-		return petService.findById(1L).orElse(null);
+	public List<Pet> getPet() {
+		return petService.findAll();
 	}
 	
 	@PostMapping
