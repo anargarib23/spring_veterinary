@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project.veterinary.dao.PetDao;
@@ -43,8 +42,14 @@ public class PetDAOImpl implements PetDao<Pet> {
 
 	@Override
 	public void update(Pet pet, Long id) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
 		
+		Pet petReference = (Pet) session.createQuery("from Pet where id=:id", Pet.class).
+				setParameter("id", id).getSingleResult();
+		pet.setId(petReference.getId());
+		session.merge(pet);
+		session.getTransaction().commit();
 	}
 
 	@Override

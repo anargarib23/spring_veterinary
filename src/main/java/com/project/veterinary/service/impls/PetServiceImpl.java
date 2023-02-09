@@ -29,4 +29,9 @@ public class PetServiceImpl implements PetService {
 		petDao.add(pet);
 	}
 
+	@Override
+	public void update(Pet pet, Long id) {
+		petDao.update(pet, id);
+	}
+
 }

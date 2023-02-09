@@ -3,6 +3,8 @@ package com.project.veterinary.model;
 
 import java.util.Date;
 
+import org.apache.el.parser.AstFalse;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,13 +23,13 @@ public class Pet {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="name")
+	@Column(name="name", nullable=false)
 	private String name;
 	
 	@Column(name="breed")
 	private String breed;
 	
-	@Column(name="species")
+	@Column(name="species", nullable=false)
 	private String species;
 	
 	@Column(name="sterilized")
