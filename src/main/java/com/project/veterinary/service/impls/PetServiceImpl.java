@@ -38,6 +38,13 @@ public class PetServiceImpl implements PetService {
 	public void deleteById(Long id) {
 		petDao.deleteById(id);
 	}
-	
 
+	@Override
+	public void addMultiple(List<Pet> petList) {
+		petList.forEach(pet -> {
+			this.add(pet);
+		});
+	}
+	
+	
 }

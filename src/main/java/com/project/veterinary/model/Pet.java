@@ -3,8 +3,6 @@ package com.project.veterinary.model;
 
 import java.util.Date;
 
-import org.apache.el.parser.AstFalse;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +23,9 @@ public class Pet {
 	
 	@Column(name="name", nullable=false)
 	private String name;
+	
+	@Column(name="sex", nullable=false)
+	private String sex;
 	
 	@Column(name="breed")
 	private String breed;
@@ -106,6 +107,14 @@ public class Pet {
 
 	public void setSterilizationDate(Date sterilizationDate) {
 		this.sterilizationDate = sterilizationDate;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	

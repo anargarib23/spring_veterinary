@@ -3,6 +3,7 @@ package com.project.veterinary.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,17 +34,26 @@ public class PetController {
 	}
 	
 	@PostMapping
-	public void addPet(@RequestBody Pet pet) {
+	public ResponseEntity<String> addPet(@RequestBody Pet pet) {
 		petService.add(pet);
+		return ResponseEntity.ok("pet added");
+	}
+	
+	@PostMapping("/multiple")
+	public ResponseEntity<String> addPets(@RequestBody List<Pet> petList) {
+		petService.addMultiple(petList);
+		return ResponseEntity.ok("%d pets added".formatted(petList.size()));
 	}
 	
 	@PutMapping
-	public void updatePet(@RequestBody Pet pet, @RequestParam Long id) {
+	public ResponseEntity<String> updatePet(@RequestBody Pet pet, @RequestParam Long id) {
 		petService.update(pet, id);
+		return ResponseEntity.ok("pet updated");
 	}
 	
 	@DeleteMapping
-	public void deletePet(@RequestParam Long id) {
+	public ResponseEntity<String> deletePet(@RequestParam Long id) {
 		petService.deleteById(id);
+		return ResponseEntity.ok("pet deleted");
 	}
 }

@@ -9,6 +9,7 @@ public interface PetService {
 	Optional<Pet> findById(Long id);
 	List<Pet> findAll();
 	void add(Pet pet);
+	void addMultiple(List<Pet> petList);
 	void update(Pet pet, Long id);
 	void deleteById(Long id);
 }
