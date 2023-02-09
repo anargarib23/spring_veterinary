@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project.veterinary.dao.PetDao;
@@ -18,7 +19,9 @@ public class PetDAOImpl implements PetDao<Pet> {
 	@Override
 	public Optional<Pet> getById(Long id) {
 		Session session = sessionFactory.getCurrentSession();
-		Pet pet = (Pet) session.createQuery("from Pet where id=:id", Pet.class).setParameter("id", id).getSingleResult();
+		session.beginTransaction();
+		Pet pet = (Pet) session.createQuery("from Pet where id= :id", Pet.class).setParameter("id", id).getSingleResult();
+		session.close();
 		return Optional.ofNullable(pet);
 	}
 
@@ -32,7 +35,9 @@ public class PetDAOImpl implements PetDao<Pet> {
 	@Override
 	public void add(Pet pet) {
 		Session session = sessionFactory.getCurrentSession();
-		session.persist(pet);
+		session.beginTransaction();
+		session.save(pet);
+		session.getTransaction().commit();
 	}
 
 	@Override

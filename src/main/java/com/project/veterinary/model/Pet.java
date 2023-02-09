@@ -1,6 +1,5 @@
 package com.project.veterinary.model;
 
-import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,13 +20,13 @@ public class Pet {
 	private Long id;
 	
 	@Column(name="species")
-	private Species species;
+	private String species;
 	
-	@Column(name="birth_date")
-	private Date birthDate;
-	
-	@Column(name="registration_date")
-	private Date registrationDate;
+//	@Column(name="birth_date")
+//	private Date birthDate;
+//	
+//	@Column(name="registration_date")
+//	private Date registrationDate;
 	
 	@Column(name="sterilized")
 	private Boolean sterilized;
@@ -40,29 +39,29 @@ public class Pet {
 		this.id = id;
 	}
 
-	public Species getSpecies() {
+	public String getSpecies() {
 		return species;
 	}
 
-	public void setSpecies(Species species) {
+	public void setSpecies(String species) {
 		this.species = species;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public Date getRegistrationDate() {
-		return registrationDate;
-	}
-
-	public void setRegistrationDate(Date registrationDate) {
-		this.registrationDate = registrationDate;
-	}
+//	public Date getBirthDate() {
+//		return birthDate;
+//	}
+//
+//	public void setBirthDate(Date birthDate) {
+//		this.birthDate = birthDate;
+//	}
+//
+//	public Date getRegistrationDate() {
+//		return registrationDate;
+//	}
+//
+//	public void setRegistrationDate(Date registrationDate) {
+//		this.registrationDate = registrationDate;
+//	}
 
 	public Boolean getSterilized() {
 		return sterilized;
@@ -74,10 +73,10 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", species=" + species + ", birthDate=" + birthDate + ", registrationDate="
-				+ registrationDate + ", sterilized=" + sterilized + "]";
+		return "Pet [id=" + id + ", species=" + species + ", sterilized=" + sterilized + "]";
 	}
-	
+
+
 	
 	
 }

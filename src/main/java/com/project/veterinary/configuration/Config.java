@@ -26,8 +26,6 @@ public class Config {
 	
 	@Bean(name="entityManagerFactory")
 	SessionFactory sessionFactory() {
-		System.out.println("++++++++++++++++++++++++++++++++++");
-		System.out.println(System.getProperty("user.dir"));
 		org.hibernate.cfg.Configuration config = new org.hibernate.cfg.Configuration();
 		config.configure(new File("hibernate.cfg.xml"));
 		SessionFactory sessionFactory = config.buildSessionFactory();
