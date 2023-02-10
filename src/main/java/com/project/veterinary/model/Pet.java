@@ -2,13 +2,19 @@ package com.project.veterinary.model;
 
 
 import java.util.Date;
+import java.util.List;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 enum Species {
@@ -22,19 +28,18 @@ public class Pet {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="name", nullable=false)
+	@Column(nullable=false)
 	private String name;
 	
-	@Column(name="sex", nullable=false)
+	@Column(nullable=false)
 	private String sex;
 	
 	@Column(name="breed")
 	private String breed;
 	
-	@Column(name="species", nullable=false)
+	@Column(nullable=false)
 	private String species;
 	
-	@Column(name="sterilized")
 	private Boolean sterilized;
 	
 	@Column(name="birth_date")
@@ -48,6 +53,11 @@ public class Pet {
 	
 	@ManyToOne
 	private Client client;
+	
+	@OneToMany
+	@Cascade({CascadeType.ALL})
+	@JoinColumn(name="pet_id")
+	List<Operation> operations;
 	
 	public Long getId() {
 		return id;
