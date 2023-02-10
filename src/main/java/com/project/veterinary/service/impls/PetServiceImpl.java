@@ -6,13 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project.veterinary.dao.PetDao;
+import com.project.veterinary.model.Client;
 import com.project.veterinary.model.Pet;
 import com.project.veterinary.service.PetService;
 
 public class PetServiceImpl implements PetService {
 	
 	@Autowired
-	private PetDao<Pet> petDao;
+	private PetDao petDao;
 
 	@Override
 	public Optional<Pet> findById(Long id) {
@@ -25,8 +26,8 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public void add(Pet pet) {
-		petDao.add(pet);
+	public void add(Pet pet, Client client) {
+		petDao.add(pet, client);
 	}
 
 	@Override
@@ -40,9 +41,9 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public void addMultiple(List<Pet> petList) {
+	public void addMultiple(List<Pet> petList, Client client) {
 		petList.forEach(pet -> {
-			this.add(pet);
+			this.add(pet, client);
 		});
 	}
 	
