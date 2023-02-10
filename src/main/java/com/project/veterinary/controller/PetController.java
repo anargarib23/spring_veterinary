@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.veterinary.dto.PetRequestDTO;
 import com.project.veterinary.model.Pet;
 import com.project.veterinary.service.PetService;
 
@@ -34,16 +35,16 @@ public class PetController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> addPet(@RequestBody Pet pet) {
-		petService.add(pet);
+	public ResponseEntity<String> addPet(@RequestBody PetRequestDTO petRequest) {
+//		petService.add(pet);
 		return ResponseEntity.ok("pet added");
 	}
 	
-	@PostMapping("/multiple")
-	public ResponseEntity<String> addPets(@RequestBody List<Pet> petList) {
-		petService.addMultiple(petList);
-		return ResponseEntity.ok("%d pets added".formatted(petList.size()));
-	}
+//	@PostMapping("/multiple")
+//	public ResponseEntity<String> addPets(@RequestBody List<Pet> petList) {
+//		petService.addMultiple(petList);
+//		return ResponseEntity.ok("%d pets added".formatted(petList.size()));
+//	}
 	
 	@PutMapping
 	public ResponseEntity<String> updatePet(@RequestBody Pet pet, @RequestParam Long id) {
