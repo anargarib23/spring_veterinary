@@ -7,9 +7,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.project.veterinary.dao.ClientDao;
 import com.project.veterinary.dao.PetDao;
+import com.project.veterinary.dao.impls.ClientDAOImpl;
 import com.project.veterinary.dao.impls.PetDAOImpl;
+import com.project.veterinary.service.ClientService;
 import com.project.veterinary.service.PetService;
+import com.project.veterinary.service.impls.ClientServiceImpl;
 import com.project.veterinary.service.impls.PetServiceImpl;
 
 @Configuration
@@ -23,6 +27,17 @@ public class Config {
 	PetDao petDao() {
 		return new PetDAOImpl();
 	}
+	
+	@Bean
+	ClientDao clienttDao() {
+		return new ClientDAOImpl();
+	}
+	
+	@Bean
+	ClientService clientService() {
+		return new ClientServiceImpl();
+	}
+	
 	
 	@Bean(name="entityManagerFactory")
 	SessionFactory sessionFactory() {

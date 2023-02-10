@@ -3,8 +3,11 @@ package com.project.veterinary.model;
 
 import java.util.Date;
 
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -48,7 +51,6 @@ public class Pet {
 	private Date sterilizationDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "client_id")
 	private Client client;
 	
 	public Long getId() {
@@ -123,6 +125,15 @@ public class Pet {
 		this.sex = sex;
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	
 	
 	
 }
