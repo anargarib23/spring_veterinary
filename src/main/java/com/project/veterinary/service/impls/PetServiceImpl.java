@@ -26,8 +26,8 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public void add(Pet pet, Client client) {
-		petDao.add(pet, client);
+	public void add(Pet pet) {
+		petDao.add(pet);
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public void addMultiple(List<Pet> petList, Client client) {
+	public void addMultiple(List<Pet> petList) {
 		petList.forEach(pet -> {
-			this.add(pet, client);
+			this.add(pet);
 		});
 	}
 	

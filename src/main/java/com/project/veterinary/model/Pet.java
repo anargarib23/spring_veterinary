@@ -55,10 +55,10 @@ public class Pet {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Client client;
 	
-//	@OneToMany
-//	@Cascade({CascadeType.ALL})
-//	@JoinColumn(name="pet_id")
-//	List<Operation> operations;
+	@OneToMany(fetch = FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	@JoinColumn(name="pet_id")
+	private List<Operation> operations;
 	
 	public Long getId() {
 		return id;
@@ -141,6 +141,8 @@ public class Pet {
 	}
 
 	
-	
+	public void addOperation(Operation operation) {
+		operations.add(operation);
+	}
 	
 }

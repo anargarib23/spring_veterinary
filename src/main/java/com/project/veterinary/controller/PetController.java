@@ -50,7 +50,7 @@ public class PetController {
 		Pet pet = petMapper.toPet(petRequest);
 		pet.setClient(client);
 		client.addPet(pet);
-		petService.add(pet, client);
+		petService.add(pet);
 		
 		return ResponseEntity.ok("pet added");
 	}
