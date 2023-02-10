@@ -15,9 +15,8 @@ public class ClientServiceImpl implements ClientService {
 	private ClientDao clientDao;
 
 	@Override
-	public Optional<Client> findById() {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public Optional<Client> findById(Long id) {
+		return clientDao.getById(id);
 	}
 
 	@Override

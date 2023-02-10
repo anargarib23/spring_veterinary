@@ -36,10 +36,11 @@ public class PetDAOImpl implements PetDao {
 	@Override
 	public void add(Pet pet, Client client) {
 		pet.setClient(client);
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.persist(pet);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.project.veterinary.model.Client;
 
 public interface ClientService {
-	Optional<Client> findById();
+	Optional<Client> findById(Long id);
 	List<Client> findAll();
 	void add(Client client);
 	void update(Client pet, Long id);

@@ -26,11 +26,14 @@
          1234
       </property>
       
-      <property name="hibernate.hbm2ddl.auto">create</property>
+      <property name="hibernate.hbm2ddl.auto">update</property>
       
       <property name="hibernate.current_session_context_class">thread</property>
       <mapping class="com.project.veterinary.model.Pet"/>
       <mapping class="com.project.veterinary.model.Client"/>
+      <mapping class="com.project.veterinary.model.Doctor"/>
+       <mapping class="com.project.veterinary.model.Operation"/>
+      
        
     
       

@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.veterinary.dto.PetRequestDTO;
+import com.project.veterinary.mapper.PetMapper;
+import com.project.veterinary.model.Client;
 import com.project.veterinary.model.Pet;
+import com.project.veterinary.service.ClientService;
 import com.project.veterinary.service.PetService;
 
 @RestController
@@ -23,6 +26,12 @@ import com.project.veterinary.service.PetService;
 public class PetController {
 	@Autowired
 	private PetService petService;
+	
+	@Autowired
+	private ClientService clientService;
+	
+	@Autowired 
+	private PetMapper petMapper;
 	
 	@GetMapping
 	public List<Pet> getAllPets() {
@@ -36,7 +45,13 @@ public class PetController {
 	
 	@PostMapping
 	public ResponseEntity<String> addPet(@RequestBody PetRequestDTO petRequest) {
-//		petService.add(pet);
+		Client client = clientService.findById(petRequest.getClientId()).orElse(null);
+		
+		Pet pet = petMapper.toPet(petRequest);
+		pet.setClient(client);
+		client.addPet(pet);
+		petService.add(pet, client);
+		
 		return ResponseEntity.ok("pet added");
 	}
 	

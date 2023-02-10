@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.project.veterinary.model.Client;
 
 public interface ClientDao {
-	Optional<Client> getById();
+	Optional<Client> getById(Long id);
 	List<Client> getAll();
 	void add(Client client);
 	void update(Client client, Long id);

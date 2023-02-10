@@ -17,9 +17,14 @@ public class ClientDAOImpl implements ClientDao{
 	private SessionFactory sessionFactory;
 
 	@Override
-	public Optional<Client> getById() {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public Optional<Client> getById(Long id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Client client = session.createQuery("from Client where id=:id", Client.class).
+				setParameter("id", id).getSingleResult();
+		session.close();
+		
+		return Optional.of(client);
 	}
 
 	@Override
