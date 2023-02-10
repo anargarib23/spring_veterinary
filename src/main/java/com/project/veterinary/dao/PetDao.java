@@ -3,7 +3,6 @@ package com.project.veterinary.dao;
 import java.util.List;
 import java.util.Optional;
 
-import com.project.veterinary.model.Client;
 import com.project.veterinary.model.Pet;
 
 public interface PetDao {

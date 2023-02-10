@@ -27,11 +27,15 @@ public class Operation {
 	@Column(name="end_time")
 	private Time endTime;
 	
+	@Column(columnDefinition = "text")
 	private String comment;
 	private Integer cost;
 	
 	@ManyToOne
 	private Pet pet;
+	
+	@ManyToOne
+	private Doctor doctor;
 
 	public Long getId() {
 		return id;

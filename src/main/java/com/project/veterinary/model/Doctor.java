@@ -40,7 +40,7 @@ public class Doctor {
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	@JoinColumn(name="operation_id")
+	@JoinColumn(name="doctor_id")
 	private List<Operation> operations;
 
 	public Long getId() {
@@ -123,6 +123,9 @@ public class Doctor {
 		this.operations = operations;
 	}
 	
+	public void addOperation(Operation operation) {
+		operations.add(operation);
+	}
 	
 	
 }

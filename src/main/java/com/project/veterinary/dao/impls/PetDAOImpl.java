@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project.veterinary.dao.PetDao;
-import com.project.veterinary.model.Client;
 import com.project.veterinary.model.Pet;
 
 public class PetDAOImpl implements PetDao {
